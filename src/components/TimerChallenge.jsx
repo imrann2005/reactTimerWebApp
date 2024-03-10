@@ -13,7 +13,7 @@ export default function TimerChallenge({ title, targetTime }) {
     //To clear the setImterval if time has been over
     if (timeRemaining <= 0) {
         clearInterval(timer.current);
-        setTimeRemaining(targetTime * 1000);
+        
         dialog.current.open();
     }
 
@@ -33,10 +33,14 @@ export default function TimerChallenge({ title, targetTime }) {
         dialog.current.open();
     }
 
+    function handleRestart(){
+        setTimeRemaining(targetTime * 1000);
+    }
+
     return (
         
         <section className="challenge">
-       <ResultModal ref={dialog} targetTime={targetTime} result={'lost'}></ResultModal>
+       <ResultModal ref={dialog} targetTime={targetTime} remainingTime={timeRemaining} onReset = {handleRestart}></ResultModal>
             <h2>
                 {title}
             </h2>

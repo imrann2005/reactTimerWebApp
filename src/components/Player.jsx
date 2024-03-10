@@ -18,6 +18,7 @@ export default function Player() {
 
   function handleClick() {
     setEnteredValue((playerName.current.value));
+    playerName.current.value = '';
   }
 
   //   const currentPlayer = playerName;
